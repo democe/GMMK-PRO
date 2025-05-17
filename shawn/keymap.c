@@ -55,7 +55,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     //        rgb_matrix_set_color(LED_SIDE_RIGHT[i], RGB_MAGENTA);
     //    }
     //    rgb_matrix_set_color(LED_CAPS, RGB_MAGENTA); // also light up capslock key when capslocked
-    }
+    //}
     if (keymap_config.no_gui) {
         rgb_matrix_set_color(LED_LWIN, RGB_MAGENTA); // light up Win key when disabled
     }
