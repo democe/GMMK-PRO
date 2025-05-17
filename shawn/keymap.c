@@ -43,12 +43,18 @@ bool encoder_update_user(uint8_t index, bool clockwise) {   // set the keypress 
 
 #ifdef RGB_MATRIX_ENABLE
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    if (IS_HOST_LED_ON(USB_LED_CAPS_LOCK)) {
-        for (uint8_t i = 0; i < 8; i++) {
+   led_t led_state = host_keyboard_led_state();
+      if (led_state.caps_lock) {
             rgb_matrix_set_color(LED_SIDE_LEFT[i], RGB_MAGENTA); // light up the sidebars when capslocked
             rgb_matrix_set_color(LED_SIDE_RIGHT[i], RGB_MAGENTA);
-        }
-        rgb_matrix_set_color(LED_CAPS, RGB_MAGENTA); // also light up capslock key when capslocked
+            rgb_matrix_set_color(LED_CAPS, RGB_MAGENTA); // also light up capslock key when capslocked
+      }
+    //if (IS_HOST_LED_ON(USB_LED_CAPS_LOCK)) {
+    //    for (uint8_t i = 0; i < 8; i++) {
+    //        rgb_matrix_set_color(LED_SIDE_LEFT[i], RGB_MAGENTA); // light up the sidebars when capslocked
+    //        rgb_matrix_set_color(LED_SIDE_RIGHT[i], RGB_MAGENTA);
+    //    }
+    //    rgb_matrix_set_color(LED_CAPS, RGB_MAGENTA); // also light up capslock key when capslocked
     }
     if (keymap_config.no_gui) {
         rgb_matrix_set_color(LED_LWIN, RGB_MAGENTA); // light up Win key when disabled
